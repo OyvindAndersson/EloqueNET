@@ -4,8 +4,8 @@
 Current Support
 -------------------------
 ######QueryBuilder######
-Select, insert, wheres, joins, unions, having, groupby, orderby, limit, offset ++
-Base and MySql grammar
+* Select, insert, wheres, joins, unions, having, groupby, orderby, limit, offset ++
+* Base and MySql grammar
 
 Usage
 -------------------------
@@ -32,7 +32,7 @@ ResultSet results = db.Table("users")
 
 **Inserting a row**
 ```C#
-  int result = db.Table("users").Insert(new Column("name", "John"), new Column("title", "Mr."));
+  int result = db.Table("users").Insert(new Column("name", "John"), new Column("title", "Mr."), new Column("age", 18));
 ```
 
 ```C#
