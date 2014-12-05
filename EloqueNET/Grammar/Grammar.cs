@@ -70,9 +70,15 @@ namespace AsysORM.EloqueNET.Grammar
             return ConcatenateComponents(CompileComponents(query));
         }
 
-        public string CompileInsert(QueryBuilder query, List<object> values)
+        public string CompileInsert(QueryBuilder query, ColumnList values)
         {
-            return "";
+            ResetBindingsIndexer();
+
+            string table = WrapTable(query.GetFrom);
+            string columns = Columnize(values);
+            string parameters = Parameterize(values);
+
+            return "insert into " + table + " (" + columns + ") values (" + parameters + ")";
         }
 
         public string CompileInsertGetId(QueryBuilder query, List<object> values, string sequence)
@@ -467,18 +473,6 @@ namespace AsysORM.EloqueNET.Grammar
 
         #endregion
 
-        #region Insert
-
-        public string CompileInsert(QueryBuilder query, ColumnList values)
-        {
-            string table = WrapTable(query.GetFrom);
-            string columns = Columnize(values);
-            string parameters = Parameterize(values);
-
-            return "insert into " + table + " (" + columns + ") values (" + parameters + ")";
-        }
-
-        #endregion
 
         #region Utility
 

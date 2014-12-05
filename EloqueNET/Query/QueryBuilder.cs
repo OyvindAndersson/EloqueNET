@@ -932,6 +932,10 @@ namespace AsysORM.EloqueNET.Query
             return results.Count > 0 ? results : null;
         }
 
+        /// <summary>
+        /// Get result set of the current query
+        /// </summary>
+        /// <returns></returns>
         public ResultSet Get()
         {
             return RunSelect();
@@ -974,6 +978,36 @@ namespace AsysORM.EloqueNET.Query
             string sql = _grammar.CompileInsert(this, list);
 
             return _connection.Insert(sql, list);
+        }
+
+        /// <summary>
+        /// Insert a new row into the from table. Parameters are expected to be 'columnname', 'value' pairs, sequentially
+        /// TODO: Somewhat unsafe, but easy to use..
+        /// </summary>
+        /// <param name="columnsAndValues"></param>
+        /// <returns></returns>
+        public int Insert(params object[] columnsAndValues)
+        {
+            try
+            {
+                ColumnList list = new ColumnList();
+                for(int i = 0; i < columnsAndValues.Length; i++)
+                {
+                    list.Add(new Column((string)columnsAndValues[i], columnsAndValues[i + 1]));
+                    i++;
+
+                    if(i >= columnsAndValues.Length)
+                        break;
+                }
+
+                string sql = _grammar.CompileInsert(this, list);
+
+                return _connection.Insert(sql, list);
+            }
+            catch(Exception ex)
+            {
+                throw new InvalidArgumentException("columnsAndValues - Must be an associative array of <string> keys and <object> values", ex);
+            }
         }
 
         /// <summary>
