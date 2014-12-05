@@ -30,6 +30,18 @@ ResultSet results = db.Table("users")
   ResultSet result = db.Table("users").Where("name", Is.EqualTo, "John").First();
 ```
 
+**Inserting a row**
+```C#
+  int result = db.Table("users").Insert(new Column("name", "John"), new Column("title", "Mr."));
+```
+
+```C#
+  ColumnList columns = new ColumnList();
+  // Add columns...
+
+  int result = db.Table("users").Insert(columns);
+```
+
 And a lot more, as well as a lot more to come.
 
 TODO
