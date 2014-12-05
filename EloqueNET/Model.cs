@@ -63,8 +63,6 @@ namespace AsysORM.EloqueNET
         bool _incrementing = true;
         bool _exists = false;
 
-        
-
         #endregion
 
         #region Regular Dependency property registration

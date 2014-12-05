@@ -1,0 +1,5 @@
+F:\Projects\Programming\ASYSFaktura\EloqueNET\obj\Debug\AsysORM.csprojResolveAssemblyReference.cache
+F:\Projects\Programming\ASYSFaktura\EloqueNET\bin\Debug\EloqueNET.dll
+F:\Projects\Programming\ASYSFaktura\EloqueNET\bin\Debug\EloqueNET.pdb
+F:\Projects\Programming\ASYSFaktura\EloqueNET\obj\Debug\EloqueNET.dll
+F:\Projects\Programming\ASYSFaktura\EloqueNET\obj\Debug\EloqueNET.pdb
